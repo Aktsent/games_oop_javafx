@@ -4,33 +4,33 @@ public class Win {
     public static boolean check(int[][] board) {
         boolean rsl = true;
         for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                Win.horizont(board);
-                Win.vertical(board);
+                if (board[i][i] == 0 && Win.horizont(board, i) || Win.vertical(board, i)) {
+                    rsl = false;
+                    break;
             }
         }
         return rsl;
     }
 
-    public static boolean horizont(int[][] board) {
+    public static boolean horizont(int[][] board, int row) {
+        boolean rsl = false;
         for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j] == 0) {
-                    return false;
+                if (board[row][i] != 0) {
+                    rsl = true;
+                    break;
                 }
-            }
         }
-        return true;
+        return rsl;
     }
 
-    public static boolean vertical(int[][] board) {
+    public static boolean vertical(int[][] board, int column) {
+        boolean rsl = false;
         for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (board[j][i] == 0) {
-                    return false;
+                if (board[i][column] != 0) {
+                    rsl = true;
+                    break;
                 }
-            }
         }
-        return true;
+        return rsl;
     }
 }
