@@ -15,4 +15,26 @@ public class LogicTest {
         logic.add(new BishopBlack(Cell.C1));
         logic.move(Cell.C1, Cell.H6);
     }
+
+    @Test (expected = OccupiedCellException.class)
+    public void occupiedCell() throws OccupiedCellException, FigureNotFoundException {
+        Logic logic = new Logic();
+        logic.add(new BishopBlack(Cell.C1));
+        logic.add(new BishopBlack(Cell.H6));
+        logic.move(Cell.C1, Cell.H6);
+    }
+
+    @Test (expected = FigureNotFoundException.class)
+    public void figureNotFound() throws OccupiedCellException, FigureNotFoundException {
+        Logic logic = new Logic();
+        logic.add(new BishopBlack(Cell.C2));
+        logic.move(Cell.C1, Cell.H6);
+    }
+
+    @Test (expected = ImpossibleMoveException.class)
+    public void impossibleMove() throws OccupiedCellException, FigureNotFoundException {
+        Logic logic = new Logic();
+        logic.add(new BishopBlack(Cell.C1));
+        logic.move(Cell.C1, Cell.C5);
+    }
 }
