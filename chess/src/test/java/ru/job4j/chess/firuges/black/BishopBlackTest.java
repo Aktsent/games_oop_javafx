@@ -9,7 +9,6 @@ import static org.hamcrest.core.Is.is;
 import ru.job4j.chess.firuges.Figure;
 import ru.job4j.chess.firuges.black.BishopBlack;
 
-
 public class BishopBlackTest {
 
     @Test
